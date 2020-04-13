@@ -6,10 +6,11 @@ import androidx.room.*
 import com.augus.roomdeepresearch.base.DatabaseConstants
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = DatabaseConstants.ADDRESS_BOOK_TABLE_NAME)
+@Entity(
+    tableName = DatabaseConstants.ADDRESS_BOOK_TABLE_NAME,
+    primaryKeys = [DatabaseConstants.ID, DatabaseConstants.OWNER]
+)
 data class AddressBook(
-
-    @PrimaryKey
     @SerializedName("id")
     @ColumnInfo(name = DatabaseConstants.ID)
     val id: Int,
@@ -42,7 +43,6 @@ data class AddressBook(
     @ColumnInfo(name = DatabaseConstants.NOTICE)
     val notice: Boolean,
 
-    @PrimaryKey
     @SerializedName("owner")
     @ColumnInfo(name = DatabaseConstants.OWNER)
     val owner: Int,
