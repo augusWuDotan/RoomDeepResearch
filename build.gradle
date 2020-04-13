@@ -30,4 +30,5 @@ task clean(type: Delete) {
 ext {
     roomVersion = '2.2.5'
     tinypinyinVersion = '2.0.3'
+    gsonVersion = '2.8.6'
 }
