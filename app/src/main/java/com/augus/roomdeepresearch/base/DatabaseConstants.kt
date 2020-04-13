@@ -44,6 +44,7 @@ class DatabaseConstants {
         const val RELATION = "relation"
         const val NOTICE = "notice"
         const val OWNER = "owner"
+        const val STICKY = "sticky"
         const val INTRODUCTION = "introduction"
         const val IS_READ = "is_read"
         const val CREATE_AT = "create_at"
