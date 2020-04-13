@@ -1,4 +1,4 @@
-package com.augus.roomdeepresearch.Database.bean
+package com.augus.roomdeepresearch.Database
 
 
 /**
