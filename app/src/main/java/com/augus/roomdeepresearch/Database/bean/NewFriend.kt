@@ -4,10 +4,15 @@ import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
+import androidx.room.Entity
 import com.augus.roomdeepresearch.Database.IItemLayoutRes
 import com.augus.roomdeepresearch.base.DatabaseConstants
 import com.google.gson.annotations.SerializedName
 
+@Entity(
+    tableName = DatabaseConstants.NEW_FRIEND_TABLE_NAME,
+    primaryKeys = [DatabaseConstants.ID, DatabaseConstants.OWNER]
+)
 data class NewFriend(
     @SerializedName("id")
     @ColumnInfo(name = DatabaseConstants.ID)
