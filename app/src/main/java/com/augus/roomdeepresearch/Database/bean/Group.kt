@@ -9,7 +9,11 @@ import androidx.room.Ignore
 import com.augus.roomdeepresearch.Database.IItemLayoutRes
 import com.augus.roomdeepresearch.base.DatabaseConstants
 import com.google.gson.annotations.SerializedName
-@Entity
+
+@Entity(
+    tableName = DatabaseConstants.GROUP_TABLE_NAME,
+    primaryKeys = [DatabaseConstants.CONVERSATION_ID, DatabaseConstants.OWNER]
+)
 data class Group(
     @SerializedName("conversationID")
     @ColumnInfo(name = DatabaseConstants.CONVERSATION_ID)
@@ -73,8 +77,7 @@ data class Group(
         parcel.readByte() != 0.toByte(),
         parcel.readLong(),
         parcel.readByte() != 0.toByte()
-    ) {
-    }
+    )
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeString(conversationID)

@@ -17,7 +17,7 @@ class DatabaseConstants {
         const val NEW_FRIEND_TABLE_NAME = "new_friend"
 
         //群組
-        const val GROUP_LIST_TABLE_NAME = "group_list"
+        const val GROUP_TABLE_NAME = "group_list"
 
         //聊天室
         const val CHAT_ROOM_LIST_TABLE_NAME = "chat_room_list"
