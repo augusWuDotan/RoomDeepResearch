@@ -1,11 +1,11 @@
-package com.augus.roomdeepresearch.Database
+package com.augus.roomdeepresearch.database
 
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.augus.roomdeepresearch.Database.bean.AddressBook
-import com.augus.roomdeepresearch.Database.bean.Group
-import com.augus.roomdeepresearch.Database.bean.NewFriend
+import com.augus.roomdeepresearch.database.bean.AddressBook
+import com.augus.roomdeepresearch.database.bean.Group
+import com.augus.roomdeepresearch.database.bean.NewFriend
 import com.augus.roomdeepresearch.base.BaseApplication
 import com.augus.roomdeepresearch.base.DatabaseConstants
 

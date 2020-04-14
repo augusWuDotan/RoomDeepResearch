@@ -1,4 +1,4 @@
-package com.augus.roomdeepresearch.Database
+package com.augus.roomdeepresearch.database
 
 
 /**

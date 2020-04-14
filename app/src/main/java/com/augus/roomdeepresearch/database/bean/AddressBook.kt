@@ -1,9 +1,9 @@
-package com.augus.roomdeepresearch.Database.bean
+package com.augus.roomdeepresearch.database.bean
 
 import android.os.Parcel
 import android.os.Parcelable
 import androidx.room.*
-import com.augus.roomdeepresearch.Database.IItemLayoutRes
+import com.augus.roomdeepresearch.database.IItemLayoutRes
 import com.augus.roomdeepresearch.base.DatabaseConstants
 import com.google.gson.annotations.SerializedName
 

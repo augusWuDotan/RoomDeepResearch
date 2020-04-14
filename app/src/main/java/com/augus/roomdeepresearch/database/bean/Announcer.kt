@@ -1,4 +1,4 @@
-package com.augus.roomdeepresearch.Database.bean
+package com.augus.roomdeepresearch.database.bean
 
 import android.os.Parcel
 import android.os.Parcelable
