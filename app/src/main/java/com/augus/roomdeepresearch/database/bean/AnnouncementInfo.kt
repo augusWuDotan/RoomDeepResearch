@@ -10,19 +10,19 @@ import com.google.gson.annotations.SerializedName
 data class AnnouncementInfo(
     @SerializedName("isAnnouncement")
     @ColumnInfo(name = DatabaseConstants.IS_ANNOUNCEMENT)
-    val isAnnouncement: Boolean = false,
+    var isAnnouncement: Boolean = false,
 
     @SerializedName("announcement")
     @ColumnInfo(name = DatabaseConstants.ANNOUNCEMENT)
-    val announcement: String?,
+    var announcement: String?= "",
 
     @SerializedName("announcer")
     @Embedded
-    val announcer: Announcer?,
+    var announcer: Announcer?= null,
 
     @SerializedName("announceAt")
     @ColumnInfo(name = DatabaseConstants.ANNOUNCE_AT)
-    val announceAt: Long = 0
+    var announceAt: Long = 0
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readByte() != 0.toByte(),

@@ -2,9 +2,12 @@ package com.augus.roomdeepresearch.database.bean
 
 import android.os.Parcel
 import android.os.Parcelable
-import androidx.room.*
-import com.augus.roomdeepresearch.database.IItemLayoutRes
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
+import androidx.room.Entity
+import androidx.room.Ignore
 import com.augus.roomdeepresearch.base.DatabaseConstants
+import com.augus.roomdeepresearch.database.IItemLayoutRes
 import com.google.gson.annotations.SerializedName
 
 @Entity(
@@ -14,75 +17,81 @@ import com.google.gson.annotations.SerializedName
 data class AddressBook(
     @SerializedName("id")
     @ColumnInfo(name = DatabaseConstants.ID)
-    val id: Int,
+    var id: Long = 0L,
 
     @SerializedName("conversationID")
     @ColumnInfo(name = DatabaseConstants.CONVERSATION_ID)
-    val conversationID: String?,
+    var conversationID: String? = "",
 
     @SerializedName("nickname")
     @ColumnInfo(name = DatabaseConstants.NICKNAME)
-    val nickname: String?,
+    var nickname: String?= "",
 
     @SerializedName("avatar")
     @Embedded
-    val avatar: Avatar?,
+    var avatar: Avatar?=null,
 
     @SerializedName("appID")
     @ColumnInfo(name = DatabaseConstants.APP_ID)
-    val appID: String?,
+    var appID: String?= "",
 
     @SerializedName("gender")
     @ColumnInfo(name = DatabaseConstants.GENDER)
-    val gender: String?,
+    var gender: String?= "",
 
     @SerializedName("relation")
     @ColumnInfo(name = DatabaseConstants.RELATION)
-    val relation: Int,
+    var relation:  Long = 0L,
 
     @SerializedName("notice")
     @ColumnInfo(name = DatabaseConstants.NOTICE)
-    val notice: Boolean,
+    var notice: Boolean = false,
 
     @SerializedName("owner")
     @ColumnInfo(name = DatabaseConstants.OWNER)
-    val owner: Int,
+    var owner:  Long = 0L,
+
+//    @SerializedName("test")
+//    @ColumnInfo(name = "test")
+//    var test:  Boolean = false,
 
     /**
      * todo  需額外建立 聊天室列表資料表 chat_room_list 結構
      */
     @SerializedName("sticky")
     @Ignore
-    val sticky: Boolean
-) : IItemLayoutRes, Parcelable {
-    override val layoutRes: Int
-        get() = 1
+    var sticky: Boolean = false,
 
+    @Ignore
+    override val layoutRes: Int = 0
+) : IItemLayoutRes, Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readLong(),
         parcel.readString(),
         parcel.readString(),
         parcel.readParcelable(Avatar::class.java.classLoader),
         parcel.readString(),
         parcel.readString(),
-        parcel.readInt(),
+        parcel.readLong(),
         parcel.readByte() != 0.toByte(),
-        parcel.readInt(),
-        parcel.readByte() != 0.toByte()
+        parcel.readLong(),
+        parcel.readByte() != 0.toByte(),
+        parcel.readInt()
     ) {
     }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeLong(id)
         parcel.writeString(conversationID)
         parcel.writeString(nickname)
         parcel.writeParcelable(avatar, flags)
         parcel.writeString(appID)
         parcel.writeString(gender)
-        parcel.writeInt(relation)
+        parcel.writeLong(relation)
         parcel.writeByte(if (notice) 1 else 0)
-        parcel.writeInt(owner)
+        parcel.writeLong(owner)
         parcel.writeByte(if (sticky) 1 else 0)
+        parcel.writeInt(layoutRes)
     }
 
     override fun describeContents(): Int {

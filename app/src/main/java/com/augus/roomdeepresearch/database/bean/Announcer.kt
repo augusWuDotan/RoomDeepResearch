@@ -11,22 +11,23 @@ data class Announcer(
 
     @SerializedName("avatar")
     @Ignore
-    val avatar: Avatar?,
+    var avatar: Avatar?,
 
     @SerializedName("id")
     @ColumnInfo(name = DatabaseConstants.ANNOUNCER)
-    val id: Long = 0,
+    var id: Long = 0,
 
     @SerializedName("nickname")
     @Ignore
-    val nickname: String?
+    var nickname: String? = ""
 
-): Parcelable {
+) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readParcelable(Avatar::class.java.classLoader),
         parcel.readLong(),
         parcel.readString()
     )
+
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeParcelable(avatar, flags)
         parcel.writeLong(id)

@@ -9,10 +9,10 @@ import com.google.gson.annotations.SerializedName
 data class Avatar(
     @SerializedName("token")
     @ColumnInfo(name = DatabaseConstants.AVATAR_TOKEN)
-    val token: String?,
+    var token: String?,
     @SerializedName("url")
     @ColumnInfo(name = DatabaseConstants.AVATAR_URL)
-    val url: String?
+    var url: String?
 ) : Parcelable {
     constructor(parcel: Parcel) : this(
         parcel.readString(),

@@ -5,8 +5,9 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
-import com.augus.roomdeepresearch.database.IItemLayoutRes
+import androidx.room.Ignore
 import com.augus.roomdeepresearch.base.DatabaseConstants
+import com.augus.roomdeepresearch.database.IItemLayoutRes
 import com.google.gson.annotations.SerializedName
 
 @Entity(
@@ -16,59 +17,62 @@ import com.google.gson.annotations.SerializedName
 data class NewFriend(
     @SerializedName("id")
     @ColumnInfo(name = DatabaseConstants.ID)
-    val id: Int,
+    var id: Long = 0L,
 
     @SerializedName("nickname")
     @ColumnInfo(name = DatabaseConstants.NICKNAME)
-    val nickname: String?,
+    var nickname: String? = "",
 
     @SerializedName("avatar")
     @Embedded
-    val avatar: Avatar?,
+    var avatar: Avatar? = null,
 
     @SerializedName("introduction")
     @ColumnInfo(name = DatabaseConstants.INTRODUCTION)
-    val introduction: String?,
+    var introduction: String? = "",
 
     @SerializedName("isRead")
     @ColumnInfo(name = DatabaseConstants.IS_READ)
-    val isRead: Boolean,
+    var isRead: Boolean = false,
 
     @SerializedName("createAt")
     @ColumnInfo(name = DatabaseConstants.CREATE_AT)
-    val createAt: String?,
+    var createAt: String? = "",
 
     @SerializedName("gender")
     @ColumnInfo(name = DatabaseConstants.GENDER)
-    val gender: String?,
+    var gender: String? = "",
 
     @SerializedName("owner")
     @ColumnInfo(name = DatabaseConstants.OWNER)
-    val owner: Int
-) : IItemLayoutRes, Parcelable {
-    override val layoutRes: Int
-        get() = 1
+    var owner: Long = 0L,
 
+    @Ignore
+    override val layoutRes: Int = 0
+) : IItemLayoutRes, Parcelable {
     constructor(parcel: Parcel) : this(
-        parcel.readInt(),
+        parcel.readLong(),
         parcel.readString(),
         parcel.readParcelable(Avatar::class.java.classLoader),
         parcel.readString(),
         parcel.readByte() != 0.toByte(),
         parcel.readString(),
         parcel.readString(),
+        parcel.readLong(),
         parcel.readInt()
-    )
+    ) {
+    }
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
-        parcel.writeInt(id)
+        parcel.writeLong(id)
         parcel.writeString(nickname)
         parcel.writeParcelable(avatar, flags)
         parcel.writeString(introduction)
         parcel.writeByte(if (isRead) 1 else 0)
         parcel.writeString(createAt)
         parcel.writeString(gender)
-        parcel.writeInt(owner)
+        parcel.writeLong(owner)
+        parcel.writeInt(layoutRes)
     }
 
     override fun describeContents(): Int {

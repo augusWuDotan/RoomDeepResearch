@@ -6,8 +6,8 @@ import androidx.room.ColumnInfo
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.Ignore
-import com.augus.roomdeepresearch.database.IItemLayoutRes
 import com.augus.roomdeepresearch.base.DatabaseConstants
+import com.augus.roomdeepresearch.database.IItemLayoutRes
 import com.google.gson.annotations.SerializedName
 
 @Entity(
@@ -17,53 +17,54 @@ import com.google.gson.annotations.SerializedName
 data class Group(
     @SerializedName("conversationID")
     @ColumnInfo(name = DatabaseConstants.CONVERSATION_ID)
-    val conversationID: String?,
+    var conversationID: String? = "",
 
     @SerializedName("name")
     @ColumnInfo(name = DatabaseConstants.NAME)
-    val name: String?,
+    var name: String? = "",
 
     @SerializedName("avatar")
     @Embedded
-    val avatar: Avatar?,
+    var avatar: Avatar? = null,
 
     @SerializedName("announcementInfo")
     @Embedded
-    val announcementInfo: AnnouncementInfo?,
+    var announcementInfo: AnnouncementInfo? = null,
 
     @SerializedName("display")
     @ColumnInfo(name = DatabaseConstants.DISPLAY)
-    val display: Boolean = false,
+    var display: Boolean = false,
 
     @SerializedName("notice")
     @ColumnInfo(name = DatabaseConstants.NOTICE)
-    val notice: Boolean = false,
+    var notice: Boolean = false,
 
     @SerializedName("forbid_speak")
     @ColumnInfo(name = DatabaseConstants.FORBID_SPEAK)
-    val forbidSpeak: Boolean = false,
+    var forbidSpeak: Boolean = false,
 
     @SerializedName("role")
     @ColumnInfo(name = DatabaseConstants.ROLE)
-    val role: String?,
+    var role: String? = "",
 
     @SerializedName("status")
     @ColumnInfo(name = DatabaseConstants.STATUS)
-    val status: Boolean = true,
+    var status: Boolean = true,
 
     @SerializedName("owner")
     @ColumnInfo(name = DatabaseConstants.OWNER)
-    val owner: Long = 0,
+    var owner: Long = 0,
 
     /**
      * todo  需額外建立 聊天室列表資料表 chat_room_list 結構
      */
     @SerializedName("sticky")
     @Ignore
-    val sticky: Boolean = false
+    var sticky: Boolean = false,
+
+    @Ignore
+    override var layoutRes: Int = 0
 ) : IItemLayoutRes, Parcelable {
-    override val layoutRes: Int
-        get() = 0
 
     constructor(parcel: Parcel) : this(
         parcel.readString(),
