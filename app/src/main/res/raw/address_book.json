@@ -1,0 +1,67 @@
+[
+  {
+    "id": 0,
+    "nickname": "A000",
+    "avatar": {
+      "url": "url",
+      "token": "token"
+    },
+    "appID": "1000",
+    "gender": "女",
+    "conversationID": "2x2x2x0",
+    "sticky": true,
+    "notice": true
+  },
+  {
+    "id": 1,
+    "nickname": "A001",
+    "avatar": {
+      "url": "url",
+      "token": "token"
+    },
+    "appID": "1001",
+    "gender": "男",
+    "conversationID": "2x2x2x1",
+    "sticky": true,
+    "notice": true
+  },
+  {
+    "id": 2,
+    "nickname": "A002",
+    "avatar": {
+      "url": "url",
+      "token": "token"
+    },
+    "appID": "1002",
+    "gender": "女",
+    "conversationID": "2x2x2x2",
+    "sticky": true,
+    "notice": true
+  },
+  {
+    "id": 3,
+    "nickname": "A003",
+    "avatar": {
+      "url": "url",
+      "token": "token"
+    },
+    "appID": "1003",
+    "gender": "男",
+    "conversationID": "2x2x2x3",
+    "sticky": true,
+    "notice": true
+  },
+  {
+    "id": 4,
+    "nickname": "A004",
+    "avatar": {
+      "url": "url",
+      "token": "token"
+    },
+    "appID": "1004",
+    "gender": "女",
+    "conversationID": "2x2x2x4",
+    "sticky": true,
+    "notice": true
+  }
+]
