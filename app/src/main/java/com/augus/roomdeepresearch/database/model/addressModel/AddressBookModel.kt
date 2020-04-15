@@ -10,14 +10,9 @@ import io.reactivex.observers.DisposableMaybeObserver
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subscribers.ResourceSubscriber
 
-class AddressBookModel : BaseModel(), IAddressBookModel {
+class AddressBookModel(var listener: IAddressBookModel.IAddressBookModelListener?) : BaseModel(), IAddressBookModel {
 
-    private var listener: IAddressBookModel.IAddressBookModelListener? = null
     private var ds: MutableList<Disposable> = mutableListOf()
-
-    constructor(listener: IAddressBookModel.IAddressBookModelListener?){
-        this.listener = listener
-    }
 
     override fun unsubscribe() {
         if (ds.size > 0) disposableManager.delete(ds)
