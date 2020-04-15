@@ -48,4 +48,9 @@ dependencies {
 
     //[Gson]
     implementation "com.google.code.gson:gson:$gsonVersion"
+
+    //rx
+    implementation "io.reactivex.rxjava2:rxjava:$rxJavaVersion"
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    implementation "io.reactivex.rxjava2:rxkotlin:$rxKotlinVersion"
 }
