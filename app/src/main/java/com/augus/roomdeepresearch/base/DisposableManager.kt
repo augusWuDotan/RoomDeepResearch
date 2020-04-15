@@ -17,32 +17,38 @@ class DisposableManager {
         }
     }
 
-    private fun addAll(vararg ds: Disposable) {
+    fun addAll(vararg ds: Disposable) {
         compositeDisposable.addAll(*ds)
     }
 
-    private fun add(ds: Disposable) {
+    fun add(ds: Disposable) {
         compositeDisposable.add(ds)
     }
 
-    private fun clear() {
+    fun clear() {
         compositeDisposable.clear()
     }
 
-    private fun dispose() {
+    fun dispose() {
         compositeDisposable.dispose()
     }
 
-    private fun isDispose(): Boolean {
+    fun isDispose(): Boolean {
         return compositeDisposable.isDisposed
     }
 
-    private fun size(): Int {
+    fun size(): Int {
         return compositeDisposable.size()
     }
 
-    private fun delete(ds: Disposable) {
+    fun delete(ds: Disposable) {
         compositeDisposable.delete(ds)
+    }
+
+    fun delete(dss: MutableList<Disposable>) {
+        dss.forEach {
+            compositeDisposable.delete(it)
+        }
     }
 
 }
