@@ -11,7 +11,7 @@ data class Announcer(
 
     @SerializedName("avatar")
     @Ignore
-    var avatar: Avatar?,
+    var avatar: Avatar? = null,
 
     @SerializedName("id")
     @ColumnInfo(name = DatabaseConstants.ANNOUNCER)

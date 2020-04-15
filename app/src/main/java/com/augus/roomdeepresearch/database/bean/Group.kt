@@ -17,7 +17,7 @@ import com.google.gson.annotations.SerializedName
 data class Group(
     @SerializedName("conversationID")
     @ColumnInfo(name = DatabaseConstants.CONVERSATION_ID)
-    var conversationID: String? = "",
+    var conversationID: String = "",
 
     @SerializedName("name")
     @ColumnInfo(name = DatabaseConstants.NAME)
@@ -67,7 +67,7 @@ data class Group(
 ) : IItemLayoutRes, Parcelable {
 
     constructor(parcel: Parcel) : this(
-        parcel.readString(),
+        parcel.readString()!!,
         parcel.readString(),
         parcel.readParcelable(Avatar::class.java.classLoader),
         parcel.readParcelable(AnnouncementInfo::class.java.classLoader),
