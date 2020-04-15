@@ -43,7 +43,7 @@ class AddressBookModel(var listener: IAddressBookModel.IAddressBookModelListener
 
                             override fun onError(e: Throwable) {
                                 e.stackTrace.forEach {
-                                    Log.d("stackTrace","className:${it.className} \nmethodName:${it.methodName}  \nlineNumber:${it.lineNumber}")
+                                    Log.d("stackTrace","className:${it.className} methodName:${it.methodName}  lineNumber:${it.lineNumber}")
                                 }
                                 listener?.showError(e.message)
                             }

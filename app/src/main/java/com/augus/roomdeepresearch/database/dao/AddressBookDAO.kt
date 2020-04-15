@@ -13,7 +13,7 @@ interface AddressBookDAO {
     @Insert
     fun insertAddressBook(addressBook: AddressBook)
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAddressBooks(vararg addressBook: AddressBook): Maybe<MutableList<Long>>
 
     //both 無法回傳
@@ -23,7 +23,7 @@ interface AddressBookDAO {
         addressBook2: AddressBook
     )
 
-    @Insert
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAddressBooks(addressBooks: MutableList<AddressBook>): Maybe<MutableList<Long>>
 
     @Update
