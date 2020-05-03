@@ -7,18 +7,20 @@ import androidx.room.RoomDatabase
 import com.augus.roomdeepresearch.base.BaseApplication
 import com.augus.roomdeepresearch.base.DatabaseConstants
 import com.augus.roomdeepresearch.database.bean.AddressBook
+import com.augus.roomdeepresearch.database.bean.ChatListRoomBean
 import com.augus.roomdeepresearch.database.bean.Group
 import com.augus.roomdeepresearch.database.bean.NewFriend
-import com.augus.roomdeepresearch.database.dao.AddressBookDAO
+import com.augus.roomdeepresearch.database.dao.TestDAO
 
 //
 @Database(
-    entities = [AddressBook::class, NewFriend::class, Group::class],
+    entities = [AddressBook::class, NewFriend::class, Group::class, ChatListRoomBean::class
+    ],
     version = 1
 )
 abstract class TFDatabase : RoomDatabase() {
 
-    abstract val addressBook: AddressBookDAO
+    abstract val testDao: TestDAO
 
     companion object {
         val instance = TFDatabaseHolder.getDatabase()
@@ -28,10 +30,10 @@ abstract class TFDatabase : RoomDatabase() {
         fun getDatabase(): TFDatabase {
             Log.d("TFDatabaseHolder", "getDatabase")
             return Room.databaseBuilder(
-                    BaseApplication.context(),
-                    TFDatabase::class.java,
-                    DatabaseConstants.SQL_NAME
-                )
+                BaseApplication.context(),
+                TFDatabase::class.java,
+                DatabaseConstants.SQL_NAME
+            )
                 .build()
         }
 

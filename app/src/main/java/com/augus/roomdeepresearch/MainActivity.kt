@@ -5,31 +5,53 @@ import android.os.Bundle
 import android.util.Log
 import com.augus.roomdeepresearch.base.RawEntity
 import com.augus.roomdeepresearch.database.bean.AddressBook
-import com.augus.roomdeepresearch.database.presenter.AddressBookPresenter
-import com.augus.roomdeepresearch.database.presenter.IAddressBookContract
+import com.augus.roomdeepresearch.database.bean.ChatListRoomBean
+import com.augus.roomdeepresearch.database.bean.ChatListWithAddress
+import com.augus.roomdeepresearch.database.presenter.TestPresenter
+import com.augus.roomdeepresearch.database.presenter.ITestContract
 
 class MainActivity : AppCompatActivity() {
 
-    var addressBookPresenter: AddressBookPresenter? = null
+    var addressBookPresenter: TestPresenter? = null
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        addressBookPresenter = AddressBookPresenter(addressBookView)
+        addressBookPresenter = TestPresenter(addressBookView)
         val addressBooks = RawEntity.initAddressBookEntryList(resources)
-        Log.d(this.packageName,"AddressBook: ${addressBooks}")
+        val chatLists = RawEntity.initChatListEntryList(resources)
+        Log.d(this.packageName,"AddressBook: $addressBooks")
+        Log.d(this.packageName,"chatLists: $chatLists")
         addressBookPresenter?.inserAddressBooks(addressBooks)
+        addressBookPresenter?.inserChatLists(chatLists)
     }
     
-    private var addressBookView = object : IAddressBookContract.IAddressBookView{
+    private var addressBookView = object : ITestContract.ITestView{
         override fun inserAddressBooksSuccess(insertResults: MutableList<Long>?) {
-            Log.d("addressBookView","inserAddressBooksSuccess insertResults: ${insertResults}")
+            Log.d("testView","inserAddressBooksSuccess insertResults: $insertResults")
             addressBookPresenter?.getAddressBooks()
         }
 
         override fun getAddressBooksSuccess(addressBooks: MutableList<AddressBook>?) {
-            Log.d("addressBookView","getAddressBooksSuccess addressBooks: ${addressBooks}")
+            Log.d("testView","getAddressBooksSuccess addressBooks: $addressBooks")
+        }
+
+        override fun inserChatListsSuccess(insertResults: MutableList<Long>?) {
+            Log.d("testView","inserChatListsSuccess insertResults: $insertResults")
+            addressBookPresenter?.getChatLists()
+        }
+
+        override fun getChatListsSuccess(chatLists: MutableList<ChatListRoomBean>?) {
+            Log.d("testView","getChatListsSuccess chatLists: $chatLists")
+            addressBookPresenter?.getChatListWithAddressBooks()
+        }
+
+        override fun getChatListWithAddressBooksSuccess(chatListWithAddress: MutableList<ChatListWithAddress>?) {
+            Log.d("testView","getChatListWithAddressBooksSuccess chatListWithAddress: ${chatListWithAddress}")
+            chatListWithAddress?.forEach {
+                Log.d("testView","getChatListWithAddressBooksSuccess chatListRoomBean: ${it.chatListRoomBean} , addressBooks: ${it.getAddressBook()}")
+            }
         }
 
         override fun showLoading() {
@@ -43,5 +65,7 @@ class MainActivity : AppCompatActivity() {
         override fun showError(message: String?) {
             
         }
+
+
     }
 }

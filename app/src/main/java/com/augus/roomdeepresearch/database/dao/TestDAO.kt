@@ -3,12 +3,14 @@ package com.augus.roomdeepresearch.database.dao
 import androidx.room.*
 import com.augus.roomdeepresearch.base.DatabaseConstants
 import com.augus.roomdeepresearch.database.bean.AddressBook
+import com.augus.roomdeepresearch.database.bean.ChatListRoomBean
+import com.augus.roomdeepresearch.database.bean.ChatListWithAddress
 import io.reactivex.Flowable
 import io.reactivex.Maybe
 import io.reactivex.Single
 
 @Dao
-interface AddressBookDAO {
+interface TestDAO {
 
     @Insert
     fun insertAddressBook(addressBook: AddressBook)
@@ -43,4 +45,13 @@ interface AddressBookDAO {
 
     @Query("SELECT * FROM ${DatabaseConstants.ADDRESS_BOOK_TABLE_NAME}")
     fun getAddressBooksSortWithRomanPinyin(): Flowable<MutableList<AddressBook>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertChatLists(chatLists: MutableList<ChatListRoomBean>): Maybe<MutableList<Long>>
+
+    @Query("SELECT * FROM ${DatabaseConstants.CHAT_ROOM_LIST_TABLE_NAME}")
+    fun getChatLists(): Flowable<MutableList<ChatListRoomBean>>
+
+    @Query("SELECT * FROM ${DatabaseConstants.CHAT_ROOM_LIST_TABLE_NAME} WHERE ${DatabaseConstants.OWNER} == 2")
+    fun getChatListWithAddressLists(): Flowable<MutableList<ChatListWithAddress>>
 }

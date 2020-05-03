@@ -10,7 +10,8 @@
     "gender": "女",
     "conversationID": "2x2x2x0",
     "sticky": true,
-    "notice": true
+    "notice": true,
+    "owner":1
   },
   {
     "id": 1,
@@ -23,45 +24,35 @@
     "gender": "男",
     "conversationID": "2x2x2x1",
     "sticky": true,
-    "notice": true
+    "notice": true,
+    "owner":1
   },
   {
-    "id": 2,
-    "nickname": "A002",
+    "id": 0,
+    "nickname": "A000",
     "avatar": {
       "url": "url",
       "token": "token"
     },
-    "appID": "1002",
+    "appID": "1000",
     "gender": "女",
-    "conversationID": "2x2x2x2",
+    "conversationID": "2x2x2x0",
     "sticky": true,
-    "notice": true
+    "notice": true,
+    "owner":2
   },
   {
-    "id": 3,
-    "nickname": "A003",
+    "id": 1,
+    "nickname": "A001",
     "avatar": {
       "url": "url",
       "token": "token"
     },
-    "appID": "1003",
+    "appID": "1001",
     "gender": "男",
-    "conversationID": "2x2x2x3",
+    "conversationID": "2x2x2x1",
     "sticky": true,
-    "notice": true
-  },
-  {
-    "id": 4,
-    "nickname": "A004",
-    "avatar": {
-      "url": "url",
-      "token": "token"
-    },
-    "appID": "1004",
-    "gender": "女",
-    "conversationID": "2x2x2x4",
-    "sticky": true,
-    "notice": true
+    "notice": true,
+    "owner":2
   }
 ]
